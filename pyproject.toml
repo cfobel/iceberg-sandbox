@@ -59,6 +59,9 @@ platforms = ["linux-64"]
 iceberg_sandbox = { path = ".", editable = true }
 
 [tool.pixi.tasks]
+build = "hatchling build"
+lint = "black src tests"
+test = "pytest tests"
 
 [tool.pixi.dependencies]
 hatchling = ">=1.25.0,<2"
