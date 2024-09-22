@@ -25,7 +25,7 @@ catalog = GlueCatalog(
         "s3.region": session.region_name,
         "s3.secret-access-key": credentials.secret_key,
         "s3.session-token": credentials.token,
-    }
+    },
 )
 # %%
 import pandas as pd

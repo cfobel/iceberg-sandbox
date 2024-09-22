@@ -15,6 +15,5 @@ except (ImportError, LookupError):
         # The user is probably trying to run this without having installed
         # the package, so complain.
         raise RuntimeError(
-            "iceberg_sandbox is not correctly installed. "
-            "Please install it with pip."
+            "iceberg_sandbox is not correctly installed. " "Please install it with pip."
         )
