@@ -1506,9 +1506,9 @@ packages:
   requires_python: '>=3.10,<4.0'
 - kind: pypi
   name: iceberg-sandbox
-  version: 0.1.1.dev7+g8157537
+  version: 0.1.1.dev11+gf422d2c.d20240922
   path: .
-  sha256: be59f5d2da1b0760111f79a87a3c4654b71991e7b5454c7855bb89016f6b68ab
+  sha256: f01578c39d6f4f7c2a15c15006b7fede798080a9e62a73df88e2aea6e5fcbe61
   requires_dist:
   - dask
   - distributed
