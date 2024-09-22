@@ -41,6 +41,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/fqdn-1.5.1-pyhd8ed1ab_0.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/h11-0.14.0-pyhd8ed1ab_0.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/h2-4.1.0-pyhd8ed1ab_0.tar.bz2
+      - conda: https://conda.anaconda.org/conda-forge/noarch/hatch-vcs-0.4.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/hatchling-1.25.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/hpack-4.0.0-pyh9f0ad1d_0.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/httpcore-1.0.5-pyhd8ed1ab_0.conda
@@ -1335,6 +1336,25 @@ packages:
   size: 46754
   timestamp: 1634280590080
 - kind: conda
+  name: hatch-vcs
+  version: 0.4.0
+  build: pyhd8ed1ab_0
+  subdir: noarch
+  noarch: python
+  url: https://conda.anaconda.org/conda-forge/noarch/hatch-vcs-0.4.0-pyhd8ed1ab_0.conda
+  sha256: a40c25caa3ea97e722f8b3e07a220f58d600b263f5812f4f77707c1eb37f8906
+  md5: 0153b5c02cb13091f4821c7376d83db8
+  depends:
+  - hatchling >=1.1.0
+  - python >=3.8
+  - setuptools-scm >=6.4.0
+  license: MIT
+  license_family: MIT
+  purls:
+  - pkg:pypi/hatch-vcs?source=hash-mapping
+  size: 13155
+  timestamp: 1701697219032
+- kind: conda
   name: hatchling
   version: 1.25.0
   build: pyhd8ed1ab_0
@@ -1486,9 +1506,9 @@ packages:
   requires_python: '>=3.10,<4.0'
 - kind: pypi
   name: iceberg-sandbox
-  version: 0.1.dev2+gf1047f9.d20240922
+  version: 0.1.1.dev5+gc5a7c9e.d20240922
   path: .
-  sha256: e8a4ae1fe27487e393906823779dcb422f91b55761b0a5ae58091afba308c489
+  sha256: 55becb9adc164f624665c5767cc4bbae6be6a10ddfc158a4123cd9d0dee80390
   requires_dist:
   - dask
   - distributed
