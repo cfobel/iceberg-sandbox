@@ -58,6 +58,9 @@ jobs:
         with:
           path: dist
 
+      - name: List Artifact Contents
+        run: ls -R dist
+
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         with:
