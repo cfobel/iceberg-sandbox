@@ -1,6 +1,7 @@
 # %%
 import boto3.session
 from pyiceberg import __version__
+import pyiceberg.exceptions
 from timeit import default_timer as timer
 
 
@@ -63,17 +64,20 @@ def create_sample_dataframe() -> pd.DataFrame:
 pa_table = pa.Table.from_pandas(create_sample_dataframe())
 database_name = "iceberg_sandbox"
 table_name = "foo"
-table = catalog.create_table(
-    (database_name, table_name),
-    schema=pa_table.schema,
-    location="s3://net-fobel-christian-iceberg-sandbox/iceberg_sandbox_catalog/table=foo/",
-)
+try:
+    table = catalog.create_table(
+        (database_name, table_name),
+        schema=pa_table.schema,
+        location="s3://net-fobel-christian-iceberg-sandbox/iceberg_sandbox_catalog/table=foo/",
+    )
+except pyiceberg.exceptions.TableAlreadyExistsError as e:
+    table = catalog.load_table((database_name, table_name))
 
 # %%
 start = timer()
 table.append(pa_table)
 end = timer()
 print(f"Append took {end - start} seconds")
-# catalog.load_namespace_properties("iceberg_sandbox")
+catalog.load_namespace_properties("iceberg_sandbox")
 
 # %%
