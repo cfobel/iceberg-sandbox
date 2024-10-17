@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "iceberg_sandbox"
+description = "A sandbox for prototyping with Iceberg"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Christian Fobel", email = "christian@fobel.net" }]
+dependencies = [
+    # Data processing
+    "dask",
+    "distributed",
+    "fsspec",
+    "gcsfs",
+    "pandas",
+    "pyarrow",
+    "s3fs",
+    "boto3",
+    "botocore",
+    "mypy-boto3-glue",
+
+    # Data visualization
+    "matplotlib",
+    "seaborn",
+
+    # Frameworks
+    "ibis-framework[duckdb]",
+    "pyiceberg",
+
+    # Utilities
+    "pydantic",
+    "typer",
+]
+dynamic = ["version"]
+
+[project.scripts]
+iceberg-sandbox = "iceberg_sandbox.cli:app"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 88
+
+[tool.hatch.build]
+packages = ["src/iceberg_sandbox"]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/iceberg_sandbox/_version.py"
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.pypi-dependencies]
+iceberg_sandbox = { path = ".", editable = true, subdirectory = "src/iceberg_sandbox" }
+
+[tool.pixi.tasks]
+build = "hatchling build"
+lint = "black src tests"
+test = "pytest tests"
+
+[tool.pixi.dependencies]
+hatchling = ">=1.25.0,<2"
+pytest = ">=8.3.3,<9"
+black = ">=24.8.0,<25"
+isort = ">=5.13.2,<6"
+jupyter = ">=1.1.1,<2"
+setuptools-scm = ">=8.1.0,<9"
+hatch-vcs = ">=0.4.0,<0.5"
