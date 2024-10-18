@@ -32,3 +32,4 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           name: ${{ env.GITHUB_WORKFLOW }}
           files: dist/build-artifacts/*
+          tag: ${{ env.TAG }}
