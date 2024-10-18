@@ -21,6 +21,7 @@ jobs:
           path: dist
           github-token: ${{ secrets.GH_TOKEN }}
           repository: cfobel/iceberg-sandbox
+          run-id: ${{ github.event.workflow_run.id }}
 
       - name: List Artifact Contents
         run: ls -R dist
