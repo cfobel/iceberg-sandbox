@@ -1,0 +1,33 @@
+name: Release Python Package
+
+on:
+  workflow_run:
+    workflows: ["Build Python Package"]
+    types:
+      - completed
+  push:
+    tags:
+      - "**"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: dist
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: cfobel/iceberg-sandbox
+
+      - name: List Artifact Contents
+        run: ls -R dist
+
+      - name: Create Release
+        uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ env.GITHUB_WORKFLOW }}
+          files: dist/build-artifacts/*
