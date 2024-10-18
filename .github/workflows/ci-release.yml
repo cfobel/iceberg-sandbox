@@ -31,5 +31,5 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           name: ${{ env.GITHUB_WORKFLOW }}
-          files: dist/build-artifacts/*
+          files: dist/*
           tag: ${{ github.ref_name }}
