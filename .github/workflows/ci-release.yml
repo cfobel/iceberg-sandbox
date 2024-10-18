@@ -19,7 +19,7 @@ jobs:
         with:
           name: build-artifacts
           path: dist
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_TOKEN }}
           repository: cfobel/iceberg-sandbox
 
       - name: List Artifact Contents
@@ -28,6 +28,6 @@ jobs:
       - name: Create Release
         uses: meeDamian/github-release@2.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           name: ${{ env.GITHUB_WORKFLOW }}
           files: dist/build-artifacts/*
