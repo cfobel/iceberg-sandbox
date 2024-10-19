@@ -13,8 +13,6 @@ jobs:
     needs: call-build-job
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -30,3 +28,4 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           name: ${{ env.GITHUB_WORKFLOW }}
           files: dist/*
+          gzip: false
