@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-build-job:
-    uses: ./.github/workflows/build.yaml # Reuse the build job from the build.yaml file
+    uses: ./.github/workflows/build.yml # Reuse the build job from the build.yml file
 
   release:
     needs: call-build-job
